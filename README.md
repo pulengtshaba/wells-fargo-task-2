@@ -17,6 +17,6 @@ Contains Everything you need to get started on task 2 of Forage's Wells Fargo so
 * The system must store data in a relational database.
 * The system must be highly scalable.
 
-## New system data model diagram
+## The proposed New system data model diagram
 
 ![Tux](DataModel.drawio.png)
