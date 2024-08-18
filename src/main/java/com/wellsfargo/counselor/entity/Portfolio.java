@@ -20,6 +20,10 @@ public class Portfolio {
         this.creationDate = creationDate;
     }
 
+    protected Portfolio() {
+
+    }
+
     public String getCreationDate() {
         return creationDate;
     }
