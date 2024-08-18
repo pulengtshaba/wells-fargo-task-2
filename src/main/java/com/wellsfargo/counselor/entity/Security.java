@@ -1,34 +1,55 @@
 package com.wellsfargo.counselor.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
 public class Security {
+
     @Id
     @GeneratedValue()
     private long securityId;
+
+    @ManyToOne
+    private Portfolio portfolio;
 
     @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
-    private  long portfolioId;
-
-    @Column(nullable = false)
     private String category;
 
     @Column(nullable = false)
-    private double purchasePrice;
+    private float purchasePrice;
 
     @Column(nullable = false)
     private String purchaseDate;
 
     @Column(nullable = false)
-    private int quantity;
+    private float quantity;
+
+    protected Security() {
+
+    }
+
+    public Security(Portfolio portfolio, String name, String category, float purchasePrice, String purchaseDate, float quantity) {
+        this.portfolio = portfolio;
+        this.name = name;
+        this.category = category;
+        this.purchasePrice = purchasePrice;
+        this.purchaseDate = purchaseDate;
+        this.quantity = quantity;
+    }
 
     public long getSecurityId() {
         return securityId;
+    }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public String getName() {
@@ -39,14 +60,6 @@ public class Security {
         this.name = name;
     }
 
-    public long getPortfolioId() {
-        return portfolioId;
-    }
-
-    public void setPortfolioId(long portfolioId) {
-        this.portfolioId = portfolioId;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -55,11 +68,11 @@ public class Security {
         this.category = category;
     }
 
-    public double getPurchasePrice() {
+    public float getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(double purchasePrice) {
+    public void setPurchasePrice(float purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
@@ -71,22 +84,11 @@ public class Security {
         this.purchaseDate = purchaseDate;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
-
-    public Security(String name, long portfolioId, String category, double purchasePrice, String purchaseDate, int quantity) {
-        this.name = name;
-        this.portfolioId = portfolioId;
-        this.category = category;
-        this.purchasePrice = purchasePrice;
-        this.purchaseDate = purchaseDate;
-        this.quantity = quantity;
-    }
-
-    protected Security() {}
 }

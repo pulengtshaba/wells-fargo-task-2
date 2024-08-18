@@ -1,30 +1,38 @@
 package com.wellsfargo.counselor.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Client {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     private long clientId;
-    @Column(nullable = false)
-    private long addressId;
+
+    @ManyToOne
+    private Advisor advisor;
+
     @Column(nullable = false)
     private String firstName;
+
     @Column(nullable = false)
     private String lastName;
+
     @Column(nullable = false)
     private String address;
+
     @Column(nullable = false)
     private String phone;
+
     @Column(nullable = false)
     private String email;
 
-    public Client(long addressId, String firstName, String lastName, String address, String phone, String email) {
-        this.addressId = addressId;
+    protected Client() {
+
+    }
+
+    public Client(Advisor advisor, String firstName, String lastName, String address, String phone, String email) {
+        this.advisor = advisor;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -32,40 +40,16 @@ public class Client {
         this.email = email;
     }
 
-    protected Client() {
-
+    public Long getClientId() {
+        return clientId;
     }
 
-    public String getEmail() {
-        return email;
+    public Advisor getAdvisor() {
+        return advisor;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setAdvisor(Advisor advisor) {
+        this.advisor = advisor;
     }
 
     public String getFirstName() {
@@ -76,16 +60,35 @@ public class Client {
         this.firstName = firstName;
     }
 
-    public long getAddressId() {
-        return addressId;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public long getClientId() {
-        return clientId;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
-
