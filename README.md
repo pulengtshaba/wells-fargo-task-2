@@ -1,7 +1,7 @@
 # Task 2 Starter Repo
 Contains Everything you need to get started on task 2 of Forage's Wells Fargo software engineering program
 
-## Your project manager passed them along with the data model ticket:
+## Project manager passed requirements for the new system along with the data model ticket:
 
 * The system will help manage multiple financial advisors’ clients.
 * Financial advisors must be able to create, update, and remove clients.
